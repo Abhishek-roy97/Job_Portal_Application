@@ -1,0 +1,56 @@
+.form-container{
+    padding:1rem 0.5rem;
+    background-color:#b4cbd6;
+    border: 2px solid #b71da2;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+
+
+    h3{
+        margin: 1rem 0;
+        color: #000;
+        letter-spacing: -1.5px;
+      }
+    
+      .post-title{
+        text-align: center;
+        background-color: #e5eff0;
+        border-radius: 10px;
+      }
+    
+      @media (max-width: 767px){
+        padding-inline: 0.1rem;
+      }
+}   
+
+.form-container div{
+    width: 90%;
+    margin: 0.3rem auto;
+    color: #2e2ca1;
+  }
+
+.form-item{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+
+    @media (max-width: 767px){
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+}  
+
+.form-item div{
+    width: 100%;
+}
+
+.select select{
+    background-color:#e5eff0 ;
+}

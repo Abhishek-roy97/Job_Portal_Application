@@ -1,0 +1,117 @@
+<div class="container">
+  
+    <% if(errors){ %>
+    <div class="alert alert-danger" role="alert"><%= errors %></div>
+    <% } %>
+  
+    <form action="/update/<%= job.id %>" method="post" >
+      <div class="form-container">
+          <div class="post-title">
+              <h3>Update Job</h3>
+            </div>
+        <div class="form-item">
+          <div class="mb-3">
+            <label for="companyName" class="form-label">Company Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="companyName"
+              name="companyName"
+              placeholder="ex- Alphabet"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="jobLocation" class="form-label">Job Location</label>
+            <input
+              type="text"
+              class="form-control"
+              id="jobLocation"
+              name="jobLocation"
+              placeholder="ex- Kolkata"
+            />
+          </div>
+        </div>
+        <div class="mb-3 select">
+          <select
+            class="form-select"
+            name="category"
+            aria-label="Default select example"
+          >
+            <option selected>Select Job Category</option>
+            <option value="Tech">Tech</option>
+            <option value="Non-Tech">Non-Tech</option>
+          </select>
+        </div>
+        <div class="mb-3 select">
+          <select
+            class="form-select"
+            name="designation"
+            aria-label="Default select example"
+          >
+            <option value="">Select Job Desgnation</option>
+            <option value="HR">HR</option>
+            <option value="Data entry">DATA ENTRY</option>
+            <option value="SDE-1">SDE-1</option>
+            <option value="SDE-2">SDE-2</option>
+            <option value="Devops">DEVOPS</option>
+            <option value="MERN Stack developer">MERN STACK DEVELOPER</option>
+            <option value="React developer">REACT DEVELOPER</option>
+            <option value="Frontend Developer">FRONTEND DEVELOPER</option>
+            <option value="Backend Developer">BACKEND DEVELOPER</option>
+            <option value="Java Developer">JAVA DEVELOPER</option>
+            <option value="Blockchain developer">BLOCKCHAIN DEVELOPER</option>
+            <option value="AI/ML">AI/ML ENGINEER</option>
+            <option value="Data Analysis">DATA ANALYSTS</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <div class="mb-3">
+            <label for="jobLocation" class="form-label">Expected Salary</label>
+            <input
+              type="number"
+              class="form-control"
+              id="salary"
+              name="salary"
+              placeholder="ex- 500000"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="openings" class="form-label">Number of Openings</label>
+            <input
+              type="number"
+              class="form-control"
+              id="openings"
+              name="openings"
+              placeholder="ex- 5"
+            />
+          </div>
+        </div>
+        <div class="form-item">
+          <div class="mb-3">
+            <label for="openings" class="form-label">Apply by :</label>
+            <input
+              type="date"
+              class="form-control"
+              id="lastDate"
+              name="lastDate"
+              placeholder="ex- 5"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="openings" class="form-label">Skills required :</label>
+            <input
+              type="text"
+              class="form-control"
+              id="skills"
+              name="skills"
+              placeholder="ex- React,NodeJs,SQL...."
+            />
+          </div>
+        </div>
+        <div class="form-item">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,27 @@
+<div class="container">
+  <% if(jobs) { %>
+    <% jobs.forEach(job=>{ %>
+    <div class="card" style="width: 18rem;">
+      <% if(calculateRemainingDays(job.lastDate)==='ended'){ %>
+        <h5><span class="badge job-active bg-danger">Ended Hiring</span></h5> 
+        <% } else { %>
+          <h5><span class="badge job-active bg-success">Actively Hiring</span></h5> 
+          <% } %>
+      <div class="card-body">
+          <h4 class="card-title"><%= job.companyName %></h4>
+          <h5 class="card-job"><%= job.designation %></h5>
+          <div class="card-job-detail">
+            <p><strong><%= job.jobLocation %></strong></p>
+            <p><strong><%= job.salary %></strong></p>
+          </div>
+          <h4>
+            <% job.skills.forEach(skill=>{ %>
+            <span class="badge skills bg-secondary"><%= skill %></span>
+              <% }) %>
+          </h4>
+          <a href="/jobs/<%=job.id%>" class="btn btn-primary">More Details</a>
+        </div>
+      </div>
+      <% }) %>
+     <% } %> 
+</div>

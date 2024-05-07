@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="job-container">
+        <div class="job-title">
+            <h2>
+                <%= jobById.companyName%>
+            </h2>
+            <h4>
+                <%= jobById.designation %> job in <%= jobById.jobLocation %>
+            </h4>
+        </div>
+        <div class="job-details">
+            <div class="job-desc">
+                <div>
+                    <strong><em>Posted By : </em></strong>&nbsp;
+                    <strong><%= jobById.recruiter %></strong>
+                </div>
+                <div>
+                    <strong><em>Posted on : </em></strong>&nbsp;
+                    <%= jobById.postedDate %>
+                </div>
+                <div>
+                    <strong><em>Responsibilities : </em></strong>&nbsp;<br>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolores eius est minus
+                        soluta. Unde natus explicabo ducimus porro ipsum tempora ullam dolorum eveniet animi. Lorem
+                        ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, veniam.
+                    </p>
+                </div>
+                <div>
+                    <strong><em>Skills : </em></strong>&nbsp;
+                    <% jobById.skills.forEach(skill=>{ %>
+                        <span class="badge skills bg-secondary">
+                            <%= skill %>
+                        </span>
+                        <% }) %>
+                </div>
+                
+
+            </div>
+            <div class="job-apply">
+
+                <p>
+                    <strong><em>Company</em></strong> : <%= jobById.companyName %>
+                </p>
+                <p>
+                    <strong><em>Location</em></strong> : <%= jobById.jobLocation %>
+                </p>
+                <p>
+                    <strong><em>Salary</em></strong> : Upto ₹ <%= jobById.salary %>
+                </p>
+                <p>
+                    <strong><em>Apply By</em></strong> : <%= jobById.lastDate %>
+                </p>
+                <p>
+                    <strong><em>No. of Openings</em></strong> : <%= jobById.openings %>
+                </p>
+                <p>
+                    <strong><em>No. of Applicants</em></strong> : <%= jobById.applicants.length %>
+                </p>
+
+                <div>
+                    <% if(calculateRemainingDays(jobById.lastDate)>=0){ %>
+                        <a class="btn btn-primary modal-trigger" href="/jobs/<%= jobById.id %>/apply">
+                            Apply
+                        </a>
+                    <% } else { %>
+                        <a class="btn btn-primary" onclick="M.toast({html:'Job is not active'})">
+                           Ended 
+                            
+                        </a>
+                    <% } %>
+
+                   
+                    
+                </div>
+
+                <!--^ This can only be seen if You have posted this Job only -->
+                <% if(jobById.recruiterEmail === user?.userEmail){ %>
+                <div class="upd-del-btn">
+                    <strong><em>Recruiter Options :&nbsp;</em></strong>
+                    <div>
+                        <a class="btn btn-success" href="/jobs/<%= jobById.id %>/applicants">
+                            View Applicants
+                        </a>
+                    </div>
+                    <div>
+                        <a class="btn btn-warning" href="/update/<%= jobById.id %>">Update
+                            
+                        </a>
+                    </div>
+                    <div>
+                        <a class="btn btn-danger" href="/deleteJob/<%= jobById.id %>">Delete</a>
+                            
+                        
+                    </div>
+
+                </div>
+                <% } else {  %>
+                    <div class="upd-del-btn">
+                        <em><strong> *Update, Delete and View applicants buttons only visible if you posted this job</em></strong>
+                    </div>
+                <% } %>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
