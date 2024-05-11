@@ -22,6 +22,7 @@ export const userValidation = async (req, res, next) => {
   var errors = validationResult(req);
 
   if(!errors.isEmpty()){
+    console.log(errors);
     if(req.path === '/register') return res.render('register',{errors:errors.array()[0].msg});
     if(req.path === '/login') return res.render('login',{errors:errors.array()[0].msg})
   }

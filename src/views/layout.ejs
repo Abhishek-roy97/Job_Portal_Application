@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/style/jobs.css">
     <link rel="stylesheet" href="/style/post-newjob.css">
     <link rel="stylesheet" href="/style/job-details.css">
+    <link rel="stylesheet" href="/style/dashboard.css">
 </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
@@ -28,17 +29,26 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Jobs</a>
+          <a class="nav-link" href="/jobs">Jobs</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Recruiter
+            <% if(user){ %>
+              <%= user?.userName %>
+                  <% } else { %>
+                      Recruiter
+                      <% } %>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% if(user){ %>
+              <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+              <li><a class="dropdown-item" href="/postjob">Post Jobs</a></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              <% } else { %>
             <li><a class="dropdown-item" href="/login">Login</a></li>
             <li><a class="dropdown-item" href="/register">Register</a></li>
-            <li><a class="dropdown-item" href="/postjob">Post Jobs</a></li>
             
+            <% } %>
           </ul>
         </li>
         

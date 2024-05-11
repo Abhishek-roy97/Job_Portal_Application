@@ -4,6 +4,10 @@ import ejsLayouts from "express-ejs-layouts";
 import JobController from "./src/controller/job.controller.js";
 import AuthController from "./src/controller/auth.controller.js";
 import { userValidation } from "./src/middlewares/userValidation.middleware.js";
+import { jobValidation } from "./src/middlewares/jobValidation.middleware.js";
+import { setLastVisit } from "./src/middlewares/lastVisit.middleware.js"
+import resumeUpload from "./src/middlewares/resumeUpload.middleware.js";
+
 import session from "express-session";
 import cookieParser from "cookie-parser";
 
@@ -38,20 +42,28 @@ server.get('/register',authController.getSignUp);
 server.get('/login',authController.getLogin);
 server.post('/register',userValidation,authController.postSignUp);
 server.post('/login',userValidation,authController.postSignIn);
+server.get('/logout',authController.logout);
 
 
 server.get('/',jobController.getLandingPage);
 server.get('/jobs',jobController.getAllJobs);
-server.get('/postjob',jobController.getPostJob);
-server.post('/postjob',jobController.postPostJob);
+server.get('/postjob',setLastVisit,jobController.getPostJob);
+server.post('/postjob',jobValidation,jobController.postPostJob);
 
 server.get('/jobs/:id',jobController.getSingleJob);
+server.get("/dashboard",setLastVisit,jobController.getRecruiterDashboard)
+
 server.get('/jobs/:id/apply',jobController.getAddApplicants);
+server.post('/jobs/:id/apply',resumeUpload.single("applicantResume"),jobController.postApplicants)
+server.get('/jobs/:id/applicants',setLastVisit,jobController.getApplicants);
 
-server.get('/update/:id',jobController.getUpdateJob);
-server.post('/update/:id',jobController.postUpdatejob);
 
-server.get('/deleteJob/:id',jobController.deletejob);
+server.get('/update/:id',setLastVisit,jobController.getUpdateJob);
+server.post('/update/:id',jobValidation,jobController.postUpdatejob);
+
+server.get('/deleteJob/:id',setLastVisit,jobController.deletejob);
+
+
 
 //^ --Function to calculate remaining days for each jobs
 // Assuming you have a function to calculate remaining days

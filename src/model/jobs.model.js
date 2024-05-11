@@ -110,6 +110,37 @@ export default class JobModel{
             const index = job_details.findIndex((job) => { job.id == id });
             job_details.splice(index, 1);
         }
+
+        static getApplicants(id){
+            const data = job_details.find((job)=> job.id == id);
+            if(!data) return null;
+            return data?.applicants;
+        }
+        static getRecruitersPostedJob(recruiterEmail){
+            const recruitersJobs = job_details.filter((job)=>job.recruiterEmail == recruiterEmail);
+            if(!recruitersJobs){
+                console.log("Error: getRecruitersPostedjob");
+                return null;
+            }
+            return recruitersJobs;
+        }
+        static addApplicants(id, { applicantName, applicantEmail, applicantPhone }, applicantResume){
+           
+            const index = job_details.findIndex((job)=>{return job.id == id});
+            
+            
+            const applicantId = job_details[index]?.applicants.length + 1;
+            
+            job_details[index]?.applicants.push({
+                applicantId,
+                applicantName,
+                applicantEmail,
+                applicantPhone,
+                applicantResume,
+
+            })
+            
+        }
 }
 
 const job_details = [

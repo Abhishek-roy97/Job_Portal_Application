@@ -1,4 +1,6 @@
 import JobModel from "../model/jobs.model.js";
+import { sendMail } from "../middlewares/sendMail.middleware.js";
+
 export default class JobController{
 
     getLandingPage(req, res){
@@ -31,8 +33,9 @@ export default class JobController{
     }
     getAddApplicants(req, res){
         const id = req.params.id;
+        const user = req.session.user;
         const jobById = JobModel.getJobById(id);
-        res.render('job-apply',{ jobById })
+        res.render('job-apply',{ jobById, user })
     }
     getUpdateJob(req, res){
         const id = req.params.id;
@@ -58,12 +61,28 @@ export default class JobController{
         res.render('jobs', { jobs, user })
     }
     getApplicants(req, res){
-
+        const id = req.params.id;
+        const jobApplicants = JobModel.getApplicants(id);
+        const user = req.session.user;
+        res.render('applicants', { allApplicants: jobApplicants, user });
     }
-    postApplicants(req, res){
-
+    async postApplicants(req, res){
+        const id = req.params.id;
+        const fname = req.file.filename;
+        const data = req.body;
+        //console.log(id)
+        if(id){
+            JobModel.addApplicants(id, data, fname);
+            const job = JobModel.getJobById(id);
+            
+            console.log("Sending conformation email");
+            await sendMail(data,job);
+        }
+        res.redirect("/jobs");
     }
     getRecruiterDashboard(req, res){
-
+        const user = req.session.user;
+        const jobsArray = JobModel.getRecruitersPostedJob(user?.userEmail);
+        res.render('dashboard',{ jobsArray, user})
     }
 }

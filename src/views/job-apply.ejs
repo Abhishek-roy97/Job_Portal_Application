@@ -1,6 +1,6 @@
 <div id="job-apply" class="container">
     <div class="job-apply-content">
-        <form action="/jobs/<%= jobById.id %>/applicants" method="post" >
+        <form action="/jobs/<%= jobById.id %>/apply" method="post" enctype="multipart/form-data">
             <h4>Apply with one click!</h4>
             <div class="mb-3">
                 <label for="applicantName" class="form-label">Full Name : </label>
@@ -14,12 +14,12 @@
             </div>
             <div class="mb-3">
                 <label for="applicantPhone" class="form-label">Phone Number : </label>
-                <input class="form-control" type="tel" placeholder="9161111165" pattern="\+91 \d{10}" name="applicantPhone"
-                id="applicantPhone" value="+91 " title="Please enter a valid 10-digit phone number" >
+                <input class="form-control" type="tel" placeholder="9161111165"  name="applicantPhone"
+                id="applicantPhone"  >
             </div>
            <div class="mb-3">
             <label for="applicantResume" class="form-label"> Upload Resume : </label>
-            <input type="url"class="form-control" name="applicantResume" id="applicantResume" >
+            <input type="file"class="form-control" name="applicantResume" id="applicantResume" >
            </div>
             
                 <button type="submit" class="btn btn-primary">Submit</button>

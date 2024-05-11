@@ -18,6 +18,7 @@
               id="companyName"
               name="companyName"
               placeholder="ex- Alphabet"
+              value="<%= job.companyName %>"
             />
           </div>
           <div class="mb-3">
@@ -28,27 +29,31 @@
               id="jobLocation"
               name="jobLocation"
               placeholder="ex- Kolkata"
+              value="<%= job.jobLocation %>"
             />
           </div>
         </div>
         <div class="mb-3 select">
+          <label for="jobCategory" class="form-label">Job Category</label>
           <select
             class="form-select"
             name="category"
             aria-label="Default select example"
+            
           >
-            <option selected>Select Job Category</option>
+            <option selected><%= job.category %></option>
             <option value="Tech">Tech</option>
             <option value="Non-Tech">Non-Tech</option>
           </select>
         </div>
         <div class="mb-3 select">
+          <label for="jobDesignation" class="form-label">Job Designation</label>
           <select
             class="form-select"
             name="designation"
             aria-label="Default select example"
           >
-            <option value="">Select Job Desgnation</option>
+            <option value=""><%= job.designation %></option>
             <option value="HR">HR</option>
             <option value="Data entry">DATA ENTRY</option>
             <option value="SDE-1">SDE-1</option>
@@ -73,6 +78,7 @@
               id="salary"
               name="salary"
               placeholder="ex- 500000"
+              value="<%= job.salary %>"
             />
           </div>
           <div class="mb-3">
@@ -83,6 +89,7 @@
               id="openings"
               name="openings"
               placeholder="ex- 5"
+              value="<%= job.openings %>"
             />
           </div>
         </div>
@@ -95,6 +102,7 @@
               id="lastDate"
               name="lastDate"
               placeholder="ex- 5"
+              value="<%= job.lastDate %>"
             />
           </div>
           <div class="mb-3">
@@ -105,6 +113,7 @@
               id="skills"
               name="skills"
               placeholder="ex- React,NodeJs,SQL...."
+              value="<%= job.skills %>"
             />
           </div>
         </div>

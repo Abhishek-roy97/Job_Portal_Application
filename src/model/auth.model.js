@@ -1,12 +1,12 @@
 export default class UserModel {
-    constructor(_userName,_userEmail,_userPassword){
-        this.userName = _userName;
-        this.userEmail = _userEmail;
-        this.userPassword = _userPassword;
+    constructor(userName,userEmail,userPassword){
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
     }
 
     static addUser({userName,userEmail,userPassword}){
-        const userAccount = users.find(user=>user.userEmail === userEmail);
+        const userAccount = users.find((user)=>user.userEmail == userEmail);
         if(!userAccount){
             users.push({userName,userEmail,userPassword});
             return null; 
