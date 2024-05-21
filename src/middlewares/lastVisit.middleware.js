@@ -3,6 +3,6 @@ export const setLastVisit = (req, res, next)=>{
         res.locals.lastVisit = new Date(req.cookies.lastVisit).toLocaleString();
     }
 
-    res.cookie('lastVisit',new Date().toISOString(),{ maxAge: 2*24*60*60*1000,});
+    res.cookie('lastVisit',new Date().toISOString(),{ maxAge: 2*24*60*60*1000});
     next();
 }

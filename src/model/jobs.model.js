@@ -209,3 +209,4 @@ const job_details = [
         recruiterEmail: "royabhishek61097@gmail.com",
     },
 ]
+

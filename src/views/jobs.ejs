@@ -1,13 +1,15 @@
+
 <div class="container">
+  
   <% if(jobs) { %>
     <% jobs.forEach(job=>{ %>
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem;" id="toSearch">
       <% if(calculateRemainingDays(job.lastDate)==='ended'){ %>
         <h5><span class="badge job-active bg-danger">Ended Hiring</span></h5> 
         <% } else { %>
           <h5><span class="badge job-active bg-success">Actively Hiring</span></h5> 
           <% } %>
-      <div class="card-body">
+      <div class="card-body" >
           <h4 class="card-title"><%= job.companyName %></h4>
           <h5 class="card-job"><%= job.designation %></h5>
           <div class="card-job-detail">

@@ -53,16 +53,24 @@
         </li>
         
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search Jobs" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+     
+      <% if(!user){ %>
+      <div class="navbar-button">
+          <a class="btn btn-secondary" href="/register">Sign up</a>
+          <a class="btn btn-primary" href="/login">Sign in</a>
+      </div>
+      <% } else { %>
+        <div class="navbar-button">
+          <a class="btn btn-secondary" href="/dashboard">Dashboard</a>
+          <a class="btn btn-primary" href="/logout">Logout</a>
+      </div>
+      <% } %>
     </div>
   </div>
 </nav>
 <div><%-body%></div>  
 
-<script src="/scripts/dynamic.js"></script>
+
 
 </body>
 </html>
